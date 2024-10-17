@@ -2,7 +2,7 @@
 
 def sieve_of_eratosthenes(limit):
     is_prime = [True] * (limit + 1)
-    is_prime[0], is_prime[1] = False, False  # 0 and 1 are not prime numbers
+    is_prime[0], is_prime[1] = False, False
     for i in range(2, int(limit**0.5) + 1):
         if is_prime[i]:
             for j in range(i * i, limit + 1, i):
@@ -20,7 +20,7 @@ def isWinner(x, nums):
     def game_result(n):
         if n in game_results:
             return game_results[n]
-
+        
         primes = [i for i in range(2, n + 1) if is_prime[i]]
         turn = 0  # 0 indicates Maria's turn, 1 indicates Ben's turn
         available_numbers = set(range(1, n + 1))
@@ -51,7 +51,8 @@ def isWinner(x, nums):
     else:
         return None
 
-# Test the function with an example
-print("Winner:", isWinner(5, [2, 5, 1, 4, 3]))  # Expected output: "Ben"
+# Only one output line, adhering to PEP 8
+if __name__ == "__main__":
+    print("Winner:", isWinner(5, [2, 5, 1, 4, 3]))  # Expected output: "Ben"
 
 
