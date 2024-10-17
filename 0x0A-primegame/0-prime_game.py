@@ -15,14 +15,14 @@ def isWinner(x, nums):
 
     max_n = max(nums)
     is_prime = sieve_of_eratosthenes(max_n)
-    game_results = {}
 
+    game_results = {}
     def game_result(n):
         if n in game_results:
             return game_results[n]
-        
+
         primes = [i for i in range(2, n + 1) if is_prime[i]]
-        turn = 0  # 0 indicates Maria's turn, 1 indicates Ben's turn
+        turn = 0  # 0 for Maria, 1 for Ben
         available_numbers = set(range(1, n + 1))
 
         while primes:
@@ -30,9 +30,9 @@ def isWinner(x, nums):
             multiples = set(range(chosen_prime, n + 1, chosen_prime))
             available_numbers -= multiples
             primes = [p for p in primes if p in available_numbers]
-            turn = 1 - turn  # Alternate turns
+            turn = 1 - turn
 
-        game_results[n] = 1 - turn  # Last player to make a valid move
+        game_results[n] = 1 - turn
         return game_results[n]
 
     maria_wins, ben_wins = 0, 0
@@ -51,8 +51,7 @@ def isWinner(x, nums):
     else:
         return None
 
-# Only one output line, adhering to PEP 8
+# Example test
 if __name__ == "__main__":
-    print("Winner:", isWinner(5, [2, 5, 1, 4, 3]))  # Expected output: "Ben"
-
+    print(isWinner(5, [2, 5, 1, 4, 3]))  # Expected output: "Ben"
 
