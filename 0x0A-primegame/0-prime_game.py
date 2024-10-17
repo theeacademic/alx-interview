@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
 def sieve_of_eratosthenes(limit):
+    """Generates a list indicating if numbers up to limit are prime."""
     is_prime = [True] * (limit + 1)
     is_prime[0], is_prime[1] = False, False
-    for i in range(2, int(limit**0.5) + 1):
+    for i in range(2, int(limit ** 0.5) + 1):
         if is_prime[i]:
             for j in range(i * i, limit + 1, i):
                 is_prime[j] = False
@@ -11,6 +12,7 @@ def sieve_of_eratosthenes(limit):
 
 
 def isWinner(x, nums):
+    """Determines the winner of the prime game after x rounds."""
     if x <= 0 or not nums:
         return None
 
@@ -19,6 +21,7 @@ def isWinner(x, nums):
     game_results = {}
 
     def game_result(n):
+        """Simulates the game for a specific n and returns the winner."""
         if n in game_results:
             return game_results[n]
 
@@ -54,4 +57,4 @@ def isWinner(x, nums):
 
 
 if __name__ == "__main__":
-    print(isWinner(5, [2, 5, 1, 4, 3]))  # Expected output: "Ben"
+    print("Winner:", isWinner(5, [2, 5, 1, 4, 3]))  # Expected output: "Ben"
