@@ -9,14 +9,15 @@ def sieve_of_eratosthenes(limit):
                 is_prime[j] = False
     return is_prime
 
+
 def isWinner(x, nums):
     if x <= 0 or not nums:
         return None
 
     max_n = max(nums)
     is_prime = sieve_of_eratosthenes(max_n)
-
     game_results = {}
+
     def game_result(n):
         if n in game_results:
             return game_results[n]
@@ -51,7 +52,6 @@ def isWinner(x, nums):
     else:
         return None
 
-# Example test
+
 if __name__ == "__main__":
     print(isWinner(5, [2, 5, 1, 4, 3]))  # Expected output: "Ben"
-
